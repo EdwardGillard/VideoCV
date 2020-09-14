@@ -1,0 +1,43 @@
+const User = require('../models/user')
+const { secret } = require('../config/environment')
+const { unauthorized } = require('../lib/errorMessages')
+const jwt = require('jsonwebtoken')
+
+//* Register function
+//! Working ? No
+//! Errors Tested ? No
+
+async function register(req, res) {
+  const errMessage = []
+  console.log('Registering new user')
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json({ message: `Welcome ${user.username}` })
+  } catch (err) {
+    for ( const message of Object.entries(err.errors)) {
+      errMessage.push(message)
+    }
+    res.status(401).json(errMessage)
+  }
+}
+
+//* Function for login
+
+//! Working ? No
+//! Errors Tested ? No
+
+async function login(req, res, next) {
+  try {
+    const user = await User.findOne({ email: req.body.email })
+    if (!user || !user.validatePassword(req.body.password)) throw new Error(unauthorized)
+    const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '7 days' })
+    res.status(202).json({ message: `Hello ${user.username}`, token })
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = {
+  register,
+  login
+}
