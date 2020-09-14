@@ -32,21 +32,9 @@ async function createNewVideo(req,res,next) {
 //? Errors Tested ? Yes
 async function deleteVideo(req,res,next) {
   try {
-<<<<<<< HEAD
-    const user = await User.findById(req.params._id)
-    console.log(user)
-    if (!user.equals(req.currentUser._id)) {
-      throw new Error('Not authorized to do this')
-    }
-    const videoToDelete = await Video.findById(req.params.videoid)
-    if (!videoToDelete) {
-      throw new Error('Not Found')
-    }
-=======
     const videoToDelete = await Video.findById(req.params.videoid)
     if (!videoToDelete) throw new Error(notFound)
     if (!videoToDelete.user.equals(req.currentUser._id)) throw new Error(unauthorized)
->>>>>>> eddafba01c880e6e0ad92d817312e3e7357d6016
     await videoToDelete.remove()
     res.sendStatus(204)
   } catch (err){
@@ -60,19 +48,9 @@ async function deleteVideo(req,res,next) {
 async function editVideo(req,res,next) {
   req.body.user = req.currentUser
   try {
-<<<<<<< HEAD
-    const videoToEdit = await Video.findById(req.params.Videoid)
-    if (!videoToEdit) {
-      throw new Error('Not Found')
-    }
-    if (!videoToEdit.owner.equals(req.currentUser._id)){
-      throw new Error('Not authorized to do this')
-    }
-=======
     const videoToEdit = await Video.findById(req.params.videoid)
     if (!videoToEdit) throw new Error('Not Found')
     if (!videoToEdit.user.equals(req.currentUser._id)) throw new Error(unauthorized)
->>>>>>> eddafba01c880e6e0ad92d817312e3e7357d6016
     Object.assign(videoToEdit, req.body)
     await videoToEdit.save()
     res.status(202).json(videoToEdit)
