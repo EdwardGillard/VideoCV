@@ -1,9 +1,10 @@
-const User = require('..models/user')
-const Video = require('..models/video')
+const User = require('../models/user')
+const Video = require('../models/video')
 
 //* Create New video
 //! Working ? No
 //! Errors Tested ? No
+
 
 async function createNewVideo(req,res,next) {
   try {
@@ -20,6 +21,7 @@ async function createNewVideo(req,res,next) {
 //* Delete video
 //! Working ? No
 //! Errors Tested ? No
+
 
 async function deleteVideo(req,res,next) {
   try {

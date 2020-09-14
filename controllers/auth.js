@@ -7,17 +7,13 @@ const jwt = require('jsonwebtoken')
 //! Working ? No
 //! Errors Tested ? No
 
-async function register(req, res) {
-  const errMessage = []
+async function register(req, res, next) {
   console.log('Registering new user')
   try {
     const user = await User.create(req.body)
     res.status(201).json({ message: `Welcome ${user.username}` })
   } catch (err) {
-    for ( const message of Object.entries(err.errors)) {
-      errMessage.push(message)
-    }
-    res.status(401).json(errMessage)
+    next(err)
   }
 }
 
