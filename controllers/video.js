@@ -21,10 +21,10 @@ async function getSingleVideo(req, res,next) {
 //! Errors Tested ? No
 async function createNewVideo(req,res,next) {
   try {
-    req.body.owner = req.currentUser
+    req.body.user = req.currentUser
     const createdVideo = await Video.create(req.body)
     res.status(201).json(createdVideo)
-  } catch (err){
+  } catch (err) {
     next(err)
   }
 }
@@ -32,8 +32,6 @@ async function createNewVideo(req,res,next) {
 //* Delete video
 //! Working ? No
 //! Errors Tested ? No
-
-
 async function deleteVideo(req,res,next) {
   try {
     const user = await User.findById(req.params.userId)
