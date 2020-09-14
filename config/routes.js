@@ -13,20 +13,27 @@ router.route('/register')
 router.route('/login')
   .post(auth.login)
 
-//? Video Routes
+//* Video Routes
 router.route('/video')
   .post(secureRoute, video.createNewVideo)
+
+router.route('/videos')
+  .get(video.videosIndex)
 
 router.route('/video/:videoid')
   .get(video.getSingleVideo)
   .delete(secureRoute, video.deleteVideo)
   .put(secureRoute, video.editVideo)
 
+<<<<<<< HEAD
 //? User Routes
 
 router.route('/users')
   .get(user.getAllUsers)
 
+=======
+//* User Routes
+>>>>>>> developement
 router.route('/profile')
   .get(secureRoute, user.getUserProfile)
   .put(secureRoute, user.userUpdate)
