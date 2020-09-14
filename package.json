@@ -1,0 +1,25 @@
+{
+  "name": "videocv",
+  "version": "1.0.0",
+  "description": "Read me will go in here eventually.",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwardGillard/VideoCV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdwardGillard/VideoCV/issues"
+  },
+  "homepage": "https://github.com/EdwardGillard/VideoCV#readme"
+}
