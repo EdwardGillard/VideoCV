@@ -21,7 +21,7 @@ async function getSingleVideo(req, res,next) {
 //! Errors Tested ? No
 async function createNewVideo(req,res,next) {
   try {
-    req.body.owner = req.currentUser
+    req.body.user = req.currentUser
     const createdVideo = await Video.create(req.body)
     res.status(201).json(createdVideo)
   } catch (err){
