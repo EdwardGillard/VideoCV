@@ -33,11 +33,12 @@ async function createNewVideo(req,res,next) {
 //! Errors Tested ? No
 async function deleteVideo(req,res,next) {
   try {
-    const user = await User.findById(req.params.userId)
+    const user = await User.findById(req.params._id)
+    console.log(user)
     if (!user.equals(req.currentUser._id)) {
       throw new Error('Not authorized to do this')
     }
-    const videoToDelete = await Video.findById(req.params.videoId)
+    const videoToDelete = await Video.findById(req.params.videoid)
     if (!videoToDelete) {
       throw new Error('Not Found')
     }
@@ -54,7 +55,7 @@ async function deleteVideo(req,res,next) {
 
 async function editVideo(req,res,next) {
   try {
-    const videoToEdit = await Video.findById(req.params.VideoId)
+    const videoToEdit = await Video.findById(req.params.Videoid)
     if (!videoToEdit) {
       throw new Error('Not Found')
     }
