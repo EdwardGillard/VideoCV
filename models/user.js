@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   portfolio: { type: String },
   password: { type: String, required: true, unique: true },
   profileImg: { type: String },
-  gender: { type: String, require: true, enum: ['Male', 'Female'] },
+  gender: { type: String, required: true, enum: ['Male', 'Female'] },
   tagLine: { type: String, maxlength: 200 },
   jobseeker: { type: Boolean, required: true }
 })

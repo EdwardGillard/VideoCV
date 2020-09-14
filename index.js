@@ -6,7 +6,6 @@ const app = express()
 const logger = require('./lib/logger')
 const { port, dbURI } = require('./config/environment')
 
-
 // Middleware start
 
 mongoose.connect(

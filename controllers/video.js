@@ -1,6 +1,17 @@
 const Video = require('../models/video')
 const { notFound, unauthorized } = require('../lib/errorMessages')
 
+//* Video Index
+//? Working ? Yes
+async function videosIndex(req, res) {
+  try {
+    const videos = await Video.find()
+    res.status(200).json(videos)
+  } catch (err) {
+    res.json(err)
+  }
+}
+
 //* Get video
 //? Working ? Yes
 //? Errors Tested ? Yes
@@ -60,6 +71,7 @@ async function editVideo(req,res,next) {
 }
 
 module.exports = {
+  videosIndex,
   getSingleVideo,
   createNewVideo,
   deleteVideo,
