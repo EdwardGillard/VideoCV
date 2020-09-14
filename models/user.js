@@ -44,7 +44,7 @@ userSchema.methods.validatePassword = function (password) {
 userSchema
   .virtual('passwordConfirmation')
   .set(function (passwordConfirmation) {
-    this._passwordConfrimation = passwordConfirmation 
+    this._passwordConfirmation = passwordConfirmation 
   })
 
 userSchema

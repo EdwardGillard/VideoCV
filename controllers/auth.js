@@ -11,7 +11,7 @@ async function register(req, res, next) {
   console.log('Registering new user')
   try {
     const user = await User.create(req.body)
-    res.status(201).json({ message: `Welcome ${user.username}` })
+    res.status(201).json({ message: `Welcome ${user.userName}` })
   } catch (err) {
     next(err)
   }
