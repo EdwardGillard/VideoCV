@@ -1,3 +1,3 @@
 # VideoCV
 
-Ed is gay & Tom has a majestic shlong
+Read me will go in here eventually. 
