@@ -7,7 +7,7 @@ const { unauthorized } = require('../lib/errorMessages')
 //? Errors Tested ? Yes
 async function getUserProfile(req, res, next) {
   try {
-    const user = await User.findById(req.currentUser._id)
+    const user = await User.findById(req.currentUser._id).populate('createdVideos')
     if (!user) throw new Error(unauthorized)
     res.status(200).json(user)
   } catch (err) {

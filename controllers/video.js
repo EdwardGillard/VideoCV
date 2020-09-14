@@ -3,12 +3,11 @@ const Video = require('../models/video')
 const { notFound } = require('../lib/errorMessages')
 
 //* Get video
-//! Working ? No
-//! Errors Tested ? No
-
-async function getSingleVideo(req, res,next) {
+//? Working ? Yes
+//? Errors Tested ? Yes
+async function getSingleVideo(req, res, next) {
   try {
-    const video = await Video.findById(req.params._id)
+    const video = await Video.findById(req.params.videoid)
     if (!video) throw new Error(notFound)
     res.status(200).json(video)
   } catch (err) {
@@ -17,8 +16,8 @@ async function getSingleVideo(req, res,next) {
 }
 
 //* Create New video
-//! Working ? No
-//! Errors Tested ? No
+//? Working ? Yes
+//? Errors Tested ? Yes
 async function createNewVideo(req,res,next) {
   try {
     req.body.user = req.currentUser
@@ -71,8 +70,8 @@ async function editVideo(req,res,next) {
 }
 
 module.exports = {
+  getSingleVideo,
   createNewVideo,
   deleteVideo,
-  editVideo,
-  getSingleVideo
+  editVideo
 }

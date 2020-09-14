@@ -18,6 +18,8 @@ router.route('/video')
   .post(secureRoute, video.createNewVideo)
   .delete(secureRoute, video.deleteVideo)
   .put(secureRoute, video.editVideo)
+
+router.route('/video/:videoid')
   .get(video.getSingleVideo)
 
 //? User Routes
