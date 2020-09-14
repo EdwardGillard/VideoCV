@@ -1,5 +1,5 @@
-const User = require('..models/user')
-const Video = require('..models/video')
+const User = require('../models/user')
+const Video = require('../models/video')
 
 //* Create New video
 //! Working ? No

@@ -14,7 +14,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)
-    console.log('Mongo Us Connected!')
+    console.log('Mongo Is Connected!')
   })
 
 app.use(express.static(`${__dirname}/frontend`))
