@@ -43,8 +43,8 @@ async function deleteVideo(req,res,next) {
 }
 
 //* Edit video
-//! Working ? No
-//! Errors Tested ? No
+//? Working ? Yes
+//? Errors Tested ? Yes.
 async function editVideo(req,res,next) {
   req.body.user = req.currentUser
   try {

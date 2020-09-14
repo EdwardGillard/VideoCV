@@ -1,6 +1,6 @@
 const User = require('../models/user')
-// const Video = require('../models/video')
 const { unauthorized } = require('../lib/errorMessages')
+
 
 //* Get User profile
 //? Working ? Yes
@@ -15,10 +15,23 @@ async function getUserProfile(req, res, next) {
   }
 }
 
+//* get all users
+//? Working ? Yes
+//? Errors Tested ? Yes
+async function getAllUsers(req, res, next) {
+  try {
+    const allUsers = await User.find().populate('createdVideos')
+    res.status(200).json(allUsers)
+  } catch (err) {
+    next(err)
+  }
+}
+
 //* Edit Profile
-//! Working ? No
-//! Errors Tested ? No
+//? Working ? Yes
+//? Errors Tested ? Yes
 async function userUpdate(req, res, next) {
+  console.log(req)
   try {
     req.body.user = req.currentUser
     const userId = req.currentUser
@@ -32,5 +45,6 @@ async function userUpdate(req, res, next) {
 
 module.exports = {
   getUserProfile,
-  userUpdate
+  userUpdate,
+  getAllUsers
 }

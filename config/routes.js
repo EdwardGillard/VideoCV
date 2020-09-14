@@ -23,6 +23,10 @@ router.route('/video/:videoid')
   .put(secureRoute, video.editVideo)
 
 //? User Routes
+
+router.route('/users')
+  .get(user.getAllUsers)
+
 router.route('/profile')
   .get(secureRoute, user.getUserProfile)
   .put(secureRoute, user.userUpdate)
