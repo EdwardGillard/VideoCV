@@ -18,6 +18,7 @@ router.route('/video')
   .post(secureRoute, video.createNewVideo)
   .delete(secureRoute, video.deleteVideo)
   .put(secureRoute, video.editVideo)
+  .get(video.getSingleVideo)
 
 //? User Routes
 router.route('/profile')
