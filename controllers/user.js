@@ -3,8 +3,8 @@ const User = require('../models/user')
 const { unauthorized } = require('../lib/errorMessages')
 
 //* Get User profile
-//! Working ? No
-//! Errors Tested ? No
+//? Working ? Yes
+//? Errors Tested ? Yes
 async function getUserProfile(req, res, next) {
   try {
     const user = await User.findById(req.currentUser._id)
