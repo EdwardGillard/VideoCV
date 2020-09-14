@@ -16,11 +16,11 @@ router.route('/login')
 //? Video Routes
 router.route('/video')
   .post(secureRoute, video.createNewVideo)
-  .delete(secureRoute, video.deleteVideo)
-  .put(secureRoute, video.editVideo)
 
 router.route('/video/:videoid')
   .get(video.getSingleVideo)
+  .delete(secureRoute, video.deleteVideo)
+  .put(secureRoute, video.editVideo)
 
 //? User Routes
 router.route('/profile')
