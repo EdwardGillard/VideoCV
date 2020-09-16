@@ -28,7 +28,10 @@ router.route('/video/:videoid')
 //? User Routes
 
 router.route('/users')
-  .get(user.getAllUsers)
+  .get(secureRoute, user.getAllUsers)
+
+router.route('/users/:username')
+  .get(user.getSingleUser)
 
 router.route('/profile')
   .get(secureRoute, user.getUserProfile)

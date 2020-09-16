@@ -7,6 +7,8 @@ Controllers:
 auth - register
 video - all
 
+navbar
+
 models:
 video
 user - together
@@ -14,7 +16,15 @@ user - together
 ed:
 testing backend using insomnia and resolving issues
 routes
-error messages
+error messages backend
+front end-
+Userdash board,
+all users
+getSingle user
+login
+register
+animations.
+
 
 
 
