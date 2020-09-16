@@ -25,15 +25,11 @@ router.route('/video/:videoid')
   .delete(secureRoute, video.deleteVideo)
   .put(secureRoute, video.editVideo)
 
-<<<<<<< HEAD
 //? User Routes
 
 router.route('/users')
   .get(user.getAllUsers)
 
-=======
-//* User Routes
->>>>>>> developement
 router.route('/profile')
   .get(secureRoute, user.getUserProfile)
   .put(secureRoute, user.userUpdate)
