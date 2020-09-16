@@ -1,0 +1,150 @@
+/** navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  height: 10vh;
+  width: 100vw;
+  padding: 10px;
+  z-index: 30;
+  transition: all .6s;
+}
+
+nav img {
+  cursor: pointer;
+  height: 80px;
+  width: 80px;
+}
+
+@media only screen and (max-width: 650px) {
+  nav img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+/* @media only screen and (max-width: 420px) {
+  nav img {
+    height: 40px;
+    width: 40px;
+  }
+} */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: inline;
+  padding: 10px 20px;
+  margin: 20px;
+  cursor: pointer;
+  color: white;
+  transition: all .5s;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media only screen and (max-width: 780px) {
+  .nav-link {
+    font-size: 12px;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .nav-link {
+    font-size: 9px;
+    padding: 0;
+  }
+}
+
+.nav-links:last-child {
+  margin-right: 40px;
+}
+
+@media only screen and (max-width: 650px) {
+  .nav-links:last-child {
+    padding: 0;
+  }
+}
+
+.nav-link:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-colored {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.nav-transparent {
+  background-color: transparent;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
+  transform: translateX(-45px) translateY(10px);
+  transition: all .5s;
+}
+
+.dropdown-content a:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dropdown-content a:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: all .5s;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #979696;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}

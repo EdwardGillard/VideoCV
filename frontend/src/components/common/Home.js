@@ -1,8 +1,23 @@
 import React from 'react'
+import Navbar from '../common/Navbar'
 
 function Home () {
-  return(
-    <h1>Hello World</h1>
+  const handleScroll = () => {
+    console.log(window.pageYOffset)
+    if (window.pageYOffset > 200 ) {
+      setNavScroll('nav-colored')
+    } else {
+      setNavScroll('nav-transparent')
+    }
+  }
+
+  return (
+    <>
+      <body>
+        <Navbar/>
+        <h1>Hello World</h1>
+      </body>
+    </>
   )
 }
 
