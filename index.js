@@ -24,7 +24,6 @@ app.use(logger)
 
 app.use('/api', router)
 
-
 // Middleware End
 
 app.listen(port, () => console.log(`Express listening on port ${port}`))
