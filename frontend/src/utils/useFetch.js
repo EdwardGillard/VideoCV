@@ -1,4 +1,6 @@
 import React from 'react'
+
+
 const initialState = {
   data: null,
   error: null,
@@ -29,4 +31,5 @@ function useFetch(request, params = null) {
     refetchData
   }
 }
+
 export default useFetch
