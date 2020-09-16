@@ -1,4 +1,4 @@
-/** navbar */
+/* navbar */
 nav {
   display: flex;
   justify-content: space-between;
@@ -6,15 +6,36 @@ nav {
   top: 0;
   height: 10vh;
   width: 100vw;
-  padding: 10px;
+  // padding: 10px;
   z-index: 30;
   transition: all .6s;
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    margin: 0 60px;
+  }
+
+  .nav-left {
+    font-size: 20px;
+    ul {
+      list-style: none;
+    }
+  }
+
+  .nav-right {
+    li {
+      font-size: 40px;
+      a {
+        font-size: 20px;
+      }
+    }
+  }
 }
 
 nav img {
   cursor: pointer;
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 150px;
 }
 
 @media only screen and (max-width: 650px) {
@@ -34,12 +55,13 @@ nav img {
 .nav-links {
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 .nav-link {
   display: inline;
   padding: 10px 20px;
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
   color: white;
   transition: all .5s;
@@ -60,10 +82,6 @@ nav img {
     font-size: 9px;
     padding: 0;
   }
-}
-
-.nav-links:last-child {
-  margin-right: 40px;
 }
 
 @media only screen and (max-width: 650px) {

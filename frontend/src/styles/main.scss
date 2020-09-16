@@ -1,4 +1,9 @@
 body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
   height: 200vh;
   background-color: grey;
 }
@@ -7,14 +12,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   .video-thumbs-wrapper {
     height: 300px;
     width: 90%;
     display: flex;
     flex-direction: row;
     background-color: black;
-    margin: 200px;
+    margin: 20px 0; 
     .video-thumb-cards {
       background-color: white;
       width: 200px;

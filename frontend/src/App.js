@@ -5,10 +5,12 @@ import Login from '../src/components/auth/Login'
 import Register from '../src/components/auth/Register'
 import About from '../src/components/common/About'
 import UserDashBoard from '../src/components/user/UserDashBoard'
+import Navbar from '../src/components/common/Navbar'
 
 function App () {
   return (
     <BrowserRouter>
+    <Navbar />
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path="/about" component={About} />
