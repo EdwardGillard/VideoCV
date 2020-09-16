@@ -3,7 +3,7 @@ import { login } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 import { useHistory } from 'react-router-dom'
 
-function Login () {
+function Login() {
   const history = useHistory()
   const [formData, setFormData] = React.useState({
     email: '',
@@ -29,15 +29,17 @@ function Login () {
     }
 
   }
-
-  console.log(formData)
   return (
-    <form onSubmit={submitLogin}>
-      <input placeholder="Enter your email here"type="text" name="email" value={formData.email} onChange={handleChange}/>
+    <div className="form-wrapper">
+      <form onSubmit={submitLogin}>
+        <label>Email:</label>
+        <input placeholder="Enter your email here" type="text" name="email" value={formData.email} onChange={handleChange} />
 
-      <input name="password" type="password" onChange={handleChange}/>
-      <button type="submit">Submit</button>
-    </form>
+        <label>Password: </label>
+        <input name="password" type="password" onChange={handleChange} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   )
 }
 
