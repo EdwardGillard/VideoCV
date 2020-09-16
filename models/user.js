@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   linkedIn: { type: String },
   github: { type: String },
   portfolio: { type: String },
+  bio: { type: String, maxlength: 250 },
   password: { type: String, required: true, unique: true },
   profileImg: { type: String },
   gender: { type: String, required: true, enum: ['Male', 'Female'] },

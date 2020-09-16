@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const videoSchema = new mongoose.Schema({
   videoUrl: { type: String, required: true, unique: true },
   thumbnail: { type: String },
+  project: { type: Boolean },
   info: { type: String, maxlength: 400 },
   techStack: { type: String },
   title: { type: String, required: true, maxlength: 50 },
