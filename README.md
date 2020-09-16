@@ -11,3 +11,10 @@ models:
 video
 user - together
 
+ed:
+testing backend using insomnia and resolving issues
+routes
+error messages
+
+
+
