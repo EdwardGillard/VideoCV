@@ -20,7 +20,7 @@ function Navbar() {
           <img src={require('../../assets/videocv-logo.png')} alt="Logo" width="80" height="40"/>
           <ul className="nav-links">
             <li><Link to="/">Home</Link></li>
-            <li><a className="nav-link" href="/profiles.html">Profiles</a></li>
+            <li><Link to="/all-users">Profiles</Link></li>
             <li className="nav-link dropdown"> Categories
               <div className="dropdown-content">
                 <a href="/">Projects</a>
@@ -34,8 +34,8 @@ function Navbar() {
           <ul>
             <li className="nav-link dropdown settings"> ⚙
               <div className="dropdown-content">
-                <Link to="/dashboard"></Link>
-                <a href="/">login</a>
+                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/login">Login</Link>
                 <a href="/">logout</a>
               </div>
             </li>

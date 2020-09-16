@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { userDash } from '../../lib/api'
+import { useParams, Link } from 'react-router-dom'
 import useFetch from '../../utils/useFetch'
+import { getSingleUser } from '../../lib/api'
 import { capitalize, categoryFilter } from '../../utils/multiUseFunctions'
 
-function UserDashBoard() {
-  const { data: user, loading, error, refetchData } = useFetch(userDash)
+function GetSingleUser() {
+  const params = useParams()
+  const { data: user, errors, loading } = useFetch(getSingleUser, params.username)
 
   if (!user) return null
 
@@ -17,15 +18,10 @@ function UserDashBoard() {
           <div className="dashboard-top">
             <div className="section-one">
               <div className="profile-image">
-                {user.profileImg ? 
-                <img src={user.profileImg} alt="profile picture" />
-                : (user.gender === 'Male') ? 
-                <img src={require('../../assets/Male.png')} alt="Male" />
-                : 
-                <img src={require('../../assets/Female.png')} alt="Female" />}
+                {user.profileImg ? <img src={user.profileImg} alt="profile picture" /> : (user.gender === 'Male') ? <img src={require('../../assets/Male.png')} alt="Male" /> : <img src={require('../../assets/Female.png')} alt="Female" />}
               </div>
               <div className="intro">
-                <h1> Welcome {capitalize(user.userName)}!</h1>
+                <h1>{capitalize(user.userName)}</h1>
               </div>
             </div>
 
@@ -54,10 +50,8 @@ function UserDashBoard() {
                         <img src={vid.thumbnail} alt={vid.title} />
                       </div>
                     ))}
-                    <Link to="/createvideo" className="video-thumb-cards new-vid">
-                      <p>+</p>
-                    </Link>
                   </div> :
+
                   <div className="no-vids">
                     <p>No Videos</p>
                   </div>}
@@ -76,12 +70,8 @@ function UserDashBoard() {
                         <img src={vid.thumbnail} alt={vid.title} />
                       </div>
                     ))}
-
-                    <Link to="/createvideo" className="video-thumb-cards new-vid">
-                      <p>+</p>
-                    </Link>
-
                   </div> :
+
                   <div className="no-vids">
                     <p>No Videos</p>
                   </div>}
@@ -93,4 +83,4 @@ function UserDashBoard() {
   )
 }
 
-export default UserDashBoard
+export default GetSingleUser

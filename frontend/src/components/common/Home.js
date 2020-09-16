@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Home () {
+function Home() {
 
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div className="page home-page">
+      <img src={require('../../assets/videocv-logo.png')} alt="Logo" width="400" height="220"/>
+    </div>
   )
 }
 

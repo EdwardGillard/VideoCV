@@ -29,15 +29,20 @@ function Login() {
     }
   }
   return (
-    <div className="form-wrapper">
-      <form onSubmit={submitLogin}>
-        <label>Email:</label>
-        <input placeholder="Enter your email here" type="text" name="email" value={formData.email} onChange={handleChange} />
+    <div className="page">
+      <div className="form-wrapper">
+        <form onSubmit={submitLogin}>
 
-        <label>Password: </label>
-        <input name="password" type="password" onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
+          <label>Email:</label>
+          <input placeholder="Enter your email here" type="text" name="email" value={formData.email} onChange={handleChange} />
+
+          <label>Password: </label>
+          <input name="password" placeholder="password" type="password" onChange={handleChange} />
+
+          <button type="submit">Submit</button>
+          
+        </form>
+      </div>
     </div>
   )
 }
