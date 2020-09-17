@@ -18,11 +18,11 @@ function UserDashBoard() {
             <div className="section-one">
               <div className="profile-image">
                 {user.profileImg ? 
-                <img src={user.profileImg} alt="profile picture" />
-                : (user.gender === 'Male') ? 
-                <img src={require('../../assets/Male.png')} alt="Male" />
-                : 
-                <img src={require('../../assets/Female.png')} alt="Female" />}
+                  <img src={user.profileImg} alt="profile picture" />
+                  : (user.gender === 'Male') ? 
+                    <img src={require('../../assets/Male.png')} alt="Male" />
+                    : 
+                    <img src={require('../../assets/Female.png')} alt="Female" />}
               </div>
               <div className="intro">
                 <h1> Welcome {capitalize(user.userName)}!</h1>
@@ -40,7 +40,7 @@ function UserDashBoard() {
           </div>
 
           <div className="videos-wrapper">
-            <h1> {capitalize(user.userName)}'s Videoes </h1>
+            <h1> {capitalize(user.userName)}`&apos;`s Videoes </h1>
             <div className="videos">
               <div className="category-wrapper">
                 <h2>Projects:</h2>

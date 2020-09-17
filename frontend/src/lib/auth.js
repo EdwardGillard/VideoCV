@@ -18,7 +18,6 @@ export const getUsername = () => {
   return window.localStorage.getItem('username')
 }
 
-
 const getPayload = () => { // * returns the decoded data from the token or false
   const token = getToken()
   if (!token) return false

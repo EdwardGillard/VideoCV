@@ -10,7 +10,7 @@ function Register() {
     password: '',
     gender: 'Male',
     passwordConfirmation: '',
-    jobseeker: true,
+    jobseeker: true
   })
   const [errors, setErrors] = React.useState('')
 
@@ -37,15 +37,26 @@ function Register() {
       <form onSubmit={submitRegister}>
 
         <label>Email:</label>
-        <input placeholder="Enter your email here" type="text" name="email" value={formData.email} onChange={handleChange}></input>
+        <input 
+          placeholder="Enter your email here" 
+          type="text" 
+          name="email" 
+          value={formData.email} 
+          onChange={handleChange}
+        ></input>
 
         <label>Username:</label>
-        <input placeholder="Enter your username here" type="text" name="userName" value={formData.userName} onChange={handleChange}></input>
+        <input 
+          placeholder="Enter your username here" 
+          type="text" name="userName" 
+          value={formData.userName} 
+          onChange={handleChange}
+        ></input>
 
         <label>Gender:</label>
         <select type="text" name="gender" value={formData.gender} onChange={handleChange}>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
 
         <label>Password:</label>

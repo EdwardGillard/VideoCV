@@ -28,16 +28,28 @@ function Login() {
       setErrors(err.response)
     }
   }
+
   return (
     <div className="page">
       <div className="form-wrapper">
         <form onSubmit={submitLogin}>
 
           <label>Email:</label>
-          <input placeholder="Enter your email here" type="text" name="email" value={formData.email} onChange={handleChange} />
+          <input 
+            name="email" 
+            placeholder="Enter your email here" 
+            type="text" 
+            value={formData.email} 
+            onChange={handleChange} 
+          />
 
           <label>Password: </label>
-          <input name="password" placeholder="password" type="password" onChange={handleChange} />
+          <input 
+            name="password" 
+            placeholder="password" 
+            type="password" 
+            onChange={handleChange} 
+          />
 
           <button type="submit">Submit</button>
           

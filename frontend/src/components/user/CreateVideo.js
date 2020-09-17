@@ -3,7 +3,7 @@ import React from 'react'
 function CreateVideo() {
   return (
     <div className="page">
-      <h1>Hello world</h1>
+      <h1>Create Video Page</h1>
     </div>
   )
 }
