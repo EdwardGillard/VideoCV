@@ -1,15 +1,11 @@
 import React from 'react'
 
-function About () {
-
-
+function CreateVideo() {
   return (
     <div className="page">
-      <h1>Hello World</h1>
+      <h1>Hello world</h1>
     </div>
   )
 }
 
-
-
-export default About
+export default CreateVideo

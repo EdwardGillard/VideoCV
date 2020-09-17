@@ -15,6 +15,20 @@ async function getUserProfile(req, res, next) {
   }
 }
 
+//? Show specific User profile.
+//* WORKING tested
+//* ERROR tested
+async function getSingleUser(req, res, next) {
+  try {
+    const user = req.params.username
+    const userProfile = await User.findOne({ userName: user }).populate('createdVideos')
+    if (!userProfile) throw new Error('Not Found')
+    res.status(200).json(userProfile)
+  } catch (err) {
+    next(err)
+  }
+}
+
 //* get all users
 //? Working ? Yes
 //? Errors Tested ? Yes
@@ -46,5 +60,6 @@ async function userUpdate(req, res, next) {
 module.exports = {
   getUserProfile,
   userUpdate,
-  getAllUsers
+  getAllUsers,
+  getSingleUser
 }

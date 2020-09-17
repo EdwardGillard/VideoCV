@@ -10,6 +10,7 @@ const withHeaders = () => {
   }
 }
 
+//! - AUTH Requests -
 //* POST login to backend
 export const login = (data) => {
   return axios.post(`/api/login`, data)
@@ -20,7 +21,18 @@ export const register = (data) => {
   return axios.post(`/api/register`, data)
 }
 
-//* GET CURRENT USER PROFILE  
+//! - User Requests -
+//* GET current user profile 
 export const userDash = () => {
   return axios.get('/api/profile', withHeaders())
+}
+
+//* GET all users
+export const getAllUsers = () => {
+  return axios.get('api/users', withHeaders())
+}
+
+//* Get single user
+export const getSingleUser = (username) => {
+  return axios.get(`api/users/${username}`)
 }
