@@ -19,24 +19,24 @@ function Navbar() {
         <div className='nav-left'>
           <img src={require('../../assets/videocv-logo.png')} alt="Logo" width="80" height="40"/>
           <ul className="nav-links">
-            <li><Link to="/">Home</Link></li>
-            <li><a className="nav-link" href="/profiles.html">Profiles</a></li>
+            <li><Link className="nav-link" to="/">Home</Link></li>
+            <li><Link className="nav-link" to="/profiles.html">Profiles</Link></li>
             <li className="nav-link dropdown"> Categories
               <div className="dropdown-content">
-                <a href="/">Projects</a>
-                <a href="/">Personal</a>
+                <Link to="/">Projects</Link>
+                <Link to="/">Personal</Link>
               </div>
             </li>
           </ul>
         </div>
 
         <div className='nav-right'>
-          <ul>
+          <ul className="nav-links">
             <li className="nav-link dropdown settings"> ⚙
               <div className="dropdown-content">
-                <Link to="/dashboard"></Link>
-                <a href="/">login</a>
-                <a href="/">logout</a>
+                <Link to="/dashboard">My profile</Link>
+                <Link to="/">login</Link>
+                <Link to="/">logout</Link>
               </div>
             </li>
           </ul>
