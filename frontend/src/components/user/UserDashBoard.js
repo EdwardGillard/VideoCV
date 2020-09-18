@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { userDash } from '../../lib/api'
 import useFetch from '../../utils/useFetch'
-import { capitalize, categoryFilter } from '../../utils/multiUseFunctions'
+import { capitalize, categoryFilter, profileImageChecker } from '../../utils/multiUseFunctions'
 
 function UserDashBoard() {
   const { data: user, loading, error, refetchData } = useFetch(userDash)
@@ -17,12 +17,7 @@ function UserDashBoard() {
           <div className="dashboard-top">
             <div className="section-one">
               <div className="profile-image">
-                {user.profileImg ? 
-                  <img src={user.profileImg} alt="profile picture" />
-                  : (user.gender === 'Male') ? 
-                    <img src={require('../../assets/Male.png')} alt="Male" />
-                    : 
-                    <img src={require('../../assets/Female.png')} alt="Female" />}
+              <div>{profileImageChecker(user)}</div>
               </div>
               <div className="intro">
                 <h1> Welcome {capitalize(user.userName)}!</h1>
@@ -40,7 +35,7 @@ function UserDashBoard() {
           </div>
 
           <div className="videos-wrapper">
-            <h1> {capitalize(user.userName)}`&apos;`s Videoes </h1>
+            <h1> {capitalize(user.userName)}'s Videoes </h1>
             <div className="videos">
               <div className="category-wrapper">
                 <h2>Projects:</h2>

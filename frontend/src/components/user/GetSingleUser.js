@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useFetch from '../../utils/useFetch'
 import { getSingleUser } from '../../lib/api'
-import { capitalize, categoryFilter } from '../../utils/multiUseFunctions'
+import { capitalize, categoryFilter, profileImageChecker } from '../../utils/multiUseFunctions'
 
 function GetSingleUser() {
   const params = useParams()
@@ -18,7 +18,7 @@ function GetSingleUser() {
           <div className="dashboard-top">
             <div className="section-one">
               <div className="profile-image">
-                {user.profileImg ? <img src={user.profileImg} alt="profile picture" /> : (user.gender === 'Male') ? <img src={require('../../assets/Male.png')} alt="Male" /> : <img src={require('../../assets/Female.png')} alt="Female" />}
+              <div>{profileImageChecker(user)}</div>
               </div>
               <div className="intro">
                 <h1>{capitalize(user.userName)}</h1>

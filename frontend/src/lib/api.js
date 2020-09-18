@@ -29,10 +29,10 @@ export const userDash = () => {
 
 //* GET all users
 export const getAllUsers = () => {
-  return axios.get('api/users', withHeaders())
+  return axios.get('/api/users', withHeaders())
 }
 
 //* Get single user
 export const getSingleUser = (username) => {
-  return axios.get(`api/users/${username}`)
+  return axios.get(`/api/users/${username}`)
 }
