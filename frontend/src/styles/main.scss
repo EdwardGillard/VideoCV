@@ -75,6 +75,7 @@ label, small {
   }
   .section-two {
     width: 70%;
+    text-align: center;
 
   }
 }
@@ -121,9 +122,12 @@ label, small {
       color: black;
     }
     .no-vids {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
       text-align: center;
-      width: 100%;
     }
     .new-vid {
       display: flex;

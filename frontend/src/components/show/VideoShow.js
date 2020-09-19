@@ -6,33 +6,33 @@ import useFetch from '../../utils/useFetch'
 
 function VideoShow() {
   const params = useParams()
-  console.log(params)
-  // const { data: videos, loading, refetchData } = useFetch(getSingleVideo())
+  const { data: video, loading, errors, refetchData } = useFetch(getSingleVideo, params.videoid)
 
-  // console.log(video)
+  if (!video) return null
+  console.log(video)
 
   return (
-    <>
-    <h1>Hello world</h1>
+    <div className="page">
+      {loading ? <h1>Loading</h1> : null}
 
-      {/* <video
+      <video
         id="my-player"
         className="video-js"
         controls
         autoPlay
         preload="auto"
-        poster="//vjs.zencdn.net/v/oceans.png"
+        poster={video.thumbnail}
         data-setup='{}'>
-        <source src={video} type="video/mp4"></source>
+        <source src={video.videoUrl} type="video/mp4"></source>
         <p className="vjs-no-js">
-    To view this video please enable JavaScript, and consider upgrading to a
-    web browser that
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
           <a href="https://videojs.com/html5-video-support/">
-      supports HTML5 video
+            supports HTML5 video
           </a>
         </p>
-      </video> */}
-    </>
+      </video>
+    </div>
   )
 }
 

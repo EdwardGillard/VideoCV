@@ -33,8 +33,8 @@ function App () {
         <Route path="/createvideo" component={CreateVideo} />
         <Route path="/projects" component={Projects}/>
         <Route path="/personal" component={Personal}/>
+        <Route path="/video/:videoid" component={VideoShow}/>
         <Route path="/:username" component={GetSingleUser} />
-        {/* <Route path="/video/:videoid" component={VideoShow}/> */}
       </Switch>
     </BrowserRouter>
   )

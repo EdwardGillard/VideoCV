@@ -17,7 +17,7 @@ function UserDashBoard() {
           <div className="dashboard-top">
             <div className="section-one">
               <div className="profile-image">
-              <div>{profileImageChecker(user)}</div>
+                <div>{profileImageChecker(user)}</div>
               </div>
               <div className="intro">
                 <h1> Welcome {capitalize(user.userName)}!</h1>
@@ -49,13 +49,13 @@ function UserDashBoard() {
                         <img src={vid.thumbnail} alt={vid.title} />
                       </div>
                     ))}
-                    <Link to="/createvideo" className="video-thumb-cards new-vid">
-                      <p>+</p>
-                    </Link>
                   </div> :
-                  <div className="no-vids">
+                  <div className="video-thumb-cards no-vids">
                     <p>No Videos</p>
                   </div>}
+                  <Link to="/createvideo" className="video-thumb-cards new-vid">
+                      <p>+</p>
+                  </Link>
               </div>
             </div>
             <div className="videos">
@@ -72,14 +72,13 @@ function UserDashBoard() {
                       </div>
                     ))}
 
-                    <Link to="/createvideo" className="video-thumb-cards new-vid">
-                      <p>+</p>
-                    </Link>
-
                   </div> :
-                  <div className="no-vids">
+                  <div className="video-thumb-cards no-vids">
                     <p>No Videos</p>
                   </div>}
+                <Link to="/createvideo" className="video-thumb-cards new-vid">
+                  <p>+</p>
+                </Link>
               </div>
             </div>
           </div>

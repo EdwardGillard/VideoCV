@@ -18,7 +18,7 @@ function GetSingleUser() {
           <div className="dashboard-top">
             <div className="section-one">
               <div className="profile-image">
-              <div>{profileImageChecker(user)}</div>
+                <div>{profileImageChecker(user)}</div>
               </div>
               <div className="intro">
                 <h1>{capitalize(user.userName)}</h1>
@@ -26,12 +26,19 @@ function GetSingleUser() {
             </div>
 
             <div className="section-two">
-              <h3>{user.tagLine}</h3>
-              <h6>Portfolio: {user.portfolio} </h6>
-              <h6>Github: {user.github}</h6>
-              <h6>LinkedIn: {user.linkedIn} </h6>
-              <h6>Bio:</h6>
-              <p> {user.bio} </p>
+              {!user.tagLine && !user.portfolio && !user.github && !user.linkedIn && !user.bio ?
+                <div>
+                  <h3>User has not added any information yet</h3>
+                </div>
+                :
+                <div>
+                  <h6>{user.tagLine ? `Tag-line: ${user.tagLine} ` : null}</h6>
+                  <h6>{user.portfolio ? `Portfolio: ${user.portfolio} ` : null} </h6>
+                  <h6>{user.github ? `Github: ${user.github} ` : null}</h6>
+                  <h6>{user.linkedIn ? `LinkedIn: ${user.linkedIn} ` : null} </h6>
+                  <h6>{user.bio ? `Bio : ${user.bio}` : null}</h6>
+                </div>}
+
             </div>
           </div>
 
