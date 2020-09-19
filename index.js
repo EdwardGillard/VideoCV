@@ -5,6 +5,7 @@ const router = require('./config/routes')
 const app = express()
 const logger = require('./lib/logger')
 const { port, dbURI } = require('./config/environment')
+const errorHandler = require('./lib/errorHandlers')
 
 // Middleware start
 
@@ -23,6 +24,8 @@ app.use(bodyParser.json())
 app.use(logger)
 
 app.use('/api', router)
+
+app.use(errorHandler)
 
 // Middleware End
 

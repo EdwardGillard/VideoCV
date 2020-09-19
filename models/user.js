@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const uniqueValidator = require('mongoose-unique-validator')
 
 const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true, maxlength: 50 },
@@ -21,7 +22,7 @@ userSchema.virtual('createdVideos', {
   ref: 'Video',
   localField: '_id',
   foreignField: 'user'
-}, { toObject: { virtuals: true } } 
+}, { toObject: { virtuals: true } }
 )
 
 userSchema
@@ -45,11 +46,11 @@ userSchema.methods.validatePassword = function (password) {
 userSchema
   .virtual('passwordConfirmation')
   .set(function (passwordConfirmation) {
-    this._passwordConfirmation = passwordConfirmation 
+    this._passwordConfirmation = passwordConfirmation
   })
 
 userSchema
-  .pre('validate', function(next) {
+  .pre('validate', function (next) {
     if (this.isModified('password') && this._passwordConfirmation !== this.password) {
       this.invalidate('passwordConfirmation', 'Password does not match')
     }
@@ -59,11 +60,13 @@ userSchema
 //* Password Storage
 
 userSchema
-  .pre('save', function(next) {
+  .pre('save', function (next) {
     if (this.isModified('password')) {
       this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8))
     }
     next()
   })
+
+userSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('User', userSchema)
