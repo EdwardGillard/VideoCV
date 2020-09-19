@@ -1,11 +1,35 @@
 import React from 'react'
+import { getAllVideos } from '../../lib/api'
+import useFetch from '../../utils/useFetch'
+import { categoryFilter } from '../../utils/multiUseFunctions'
+import {Link} from 'react-router-dom'
 
 function Personal () {
+  const { data: videos, loading, refetchData } = useFetch(getAllVideos)
+
+  if (!videos) return null
+
+  //! Use Imported filter function to only return personal videos.
+  const personalVideos = categoryFilter(videos, false)
 
   return (
     <div className="page">
-      <h1>Personal Page</h1>
-    </div>
+        {loading ?
+          <div>
+            <h1>Loading.</h1>
+          </div> : 
+          (personalVideos.length < 1) ? <h1>No users </h1> 
+          : 
+          <div className="all-users-wrapper">
+          {personalVideos.map(vid => (
+            <Link to={`/video/${vid._id}`}key={vid._id} className="user-card">
+              <h5>{}</h5>
+              <div>{}</div>
+              <p>{} </p>
+            </Link>
+          ))}
+        </div>}
+      </div>
   )
 }
 

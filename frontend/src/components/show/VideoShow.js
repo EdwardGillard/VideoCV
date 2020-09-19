@@ -1,11 +1,21 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import video from 'video.js'
+import { getSingleVideo } from '../../lib/api'
+import useFetch from '../../utils/useFetch'
 
-function videoShow() {
+function VideoShow() {
+  const params = useParams()
+  console.log(params)
+  // const { data: videos, loading, refetchData } = useFetch(getSingleVideo())
+
+  // console.log(video)
+
   return (
     <>
+    <h1>Hello world</h1>
 
-      <video
+      {/* <video
         id="my-player"
         className="video-js"
         controls
@@ -13,7 +23,7 @@ function videoShow() {
         preload="auto"
         poster="//vjs.zencdn.net/v/oceans.png"
         data-setup='{}'>
-        <source src={require('../../assets/tetris.mp4')} type="video/mp4"></source>
+        <source src={video} type="video/mp4"></source>
         <p className="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a
     web browser that
@@ -21,9 +31,9 @@ function videoShow() {
       supports HTML5 video
           </a>
         </p>
-      </video>
+      </video> */}
     </>
   )
 }
 
-export default videoShow
+export default VideoShow

@@ -23,9 +23,17 @@ body {
   min-width: 100%;
 }
 
+.red {
+  border-color: red;
+}
+
 a {
   text-decoration: none;
   color:white;
+}
+
+label, small {
+  color: white;
 }
 
 .all-users-wrapper {

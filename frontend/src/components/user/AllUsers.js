@@ -6,31 +6,31 @@ import { capitalize, profileImageChecker } from '../../utils/multiUseFunctions'
 
 
 function AllUsers() {
-  const { data: users, errors, loading, refetchData } = useFetch(getAllUsers)
+  const { data: users, loading, refetchData } = useFetch(getAllUsers)
 
   if (!users) return null
 
   //! Filter to display only Jobseekers
   const allSeekers = users.filter(user => user.jobseeker)
-  console.log(allSeekers)
 
   return (
     <>
       <div className="page">
         {loading ?
           <div>
-          No users
-          </div> :
+            <h1>Loading.</h1>
+          </div> : 
+          (allSeekers.length < 1) ? <h1>No users </h1> 
+          : 
           <div className="all-users-wrapper">
-            {allSeekers.map(user => (
-              <Link to={`/${user.userName}`} key={user._id} className="user-card">
-                <h5>{capitalize(user.userName)}</h5>
-                <div>{profileImageChecker(user)}</div>
-                <p>{capitalize(user.userName)} has {user.createdVideos.length} videos </p>
-              </Link>
-            ))}
-          </div>
-        }
+          {allSeekers.map(user => (
+            <Link to={`/${user.userName}`} key={user._id} className="user-card">
+              <h5>{capitalize(user.userName)}</h5>
+              <div>{profileImageChecker(user)}</div>
+              <p>{capitalize(user.userName)} has {user.createdVideos.length} videos </p>
+            </Link>
+          ))}
+        </div>}
       </div>
     </>
   )

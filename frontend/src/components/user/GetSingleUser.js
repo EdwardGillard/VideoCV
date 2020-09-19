@@ -6,7 +6,7 @@ import { capitalize, categoryFilter, profileImageChecker } from '../../utils/mul
 
 function GetSingleUser() {
   const params = useParams()
-  const { data: user, errors, loading } = useFetch(getSingleUser, params.username)
+  const { data: user, loading } = useFetch(getSingleUser, params.username)
 
   if (!user) return null
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { isAuthenticated, logout } from '../../lib/auth'
 
 function Navbar() {
-  const history = useHistory()
   const [authenticated, setAuthenticated] = React.useState(isAuthenticated())
   const { pathname } = useLocation()
   const [navScroll, setNavScroll] = React.useState('nav-transparent')

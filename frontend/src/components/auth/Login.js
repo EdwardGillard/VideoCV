@@ -37,6 +37,7 @@ function Login() {
           <label>Email:</label>
           <input 
             name="email" 
+            className={`input ${errors ? 'red' : ''}`}
             placeholder="Enter your email here" 
             type="text" 
             value={formData.email} 
@@ -45,6 +46,7 @@ function Login() {
 
           <label>Password: </label>
           <input 
+            className={`input ${errors ? 'red' : ''}`}
             name="password" 
             placeholder="password" 
             type="password" 

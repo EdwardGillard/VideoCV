@@ -36,3 +36,15 @@ export const getAllUsers = () => {
 export const getSingleUser = (username) => {
   return axios.get(`/api/users/${username}`)
 }
+
+//! - Video Requests -
+//* GET all videos
+export const getAllVideos = () => {
+  return axios.get('/api/videos')
+}
+
+//* GET single videos
+export const getSingleVideo = (id) => {
+  return axios.get(`/api/video/${id}`)
+}
+

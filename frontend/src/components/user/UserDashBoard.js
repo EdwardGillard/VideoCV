@@ -5,7 +5,7 @@ import useFetch from '../../utils/useFetch'
 import { capitalize, categoryFilter, profileImageChecker } from '../../utils/multiUseFunctions'
 
 function UserDashBoard() {
-  const { data: user, loading, error, refetchData } = useFetch(userDash)
+  const { data: user, loading, refetchData } = useFetch(userDash)
 
   if (!user) return null
 
