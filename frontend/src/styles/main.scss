@@ -53,6 +53,7 @@ small {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: flex-start;
   .section-one {
     width: 30%;
@@ -74,18 +75,17 @@ small {
     }
   }
   .section-two {
-    width: 70%;
+    width: 60%;
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    background-color: white;
     .edit-wrapper {
-      width: 50%;
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      background-color: white;
       input{
         width: 60%;
       }
@@ -94,7 +94,7 @@ small {
       }
       .info-wrapper {
         width: 70%;
-        height: 40px;
+        height: 60px;
         color: black;
         .info {
           width: 90%;

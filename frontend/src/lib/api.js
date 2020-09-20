@@ -39,7 +39,6 @@ export const getSingleUser = (username) => {
 
 //* PUT edit user.
 export const editUserInfo = (info) => {
-  console.log(info)
   return axios.put(`/api/profile`, info, withHeaders())
 }
 

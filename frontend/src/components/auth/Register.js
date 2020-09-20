@@ -8,9 +8,14 @@ function Register() {
     userName: '',
     email: '',
     password: '',
-    gender: 'Male',
     passwordConfirmation: '',
-    jobseeker: true
+    jobseeker: true,
+    gender: 'Male',
+    github: '',
+    linkedIn: '',
+    tagLine: '',
+    bio: '',
+    portfolio: ''
   })
   const [errors, setErrors] = React.useState('')
 
@@ -28,8 +33,6 @@ function Register() {
       setErrors(err.response.data)
     }
   }
-
-  console.log(errors)
 
   return (
     <div className="page">

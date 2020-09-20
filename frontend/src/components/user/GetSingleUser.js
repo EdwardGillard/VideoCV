@@ -9,8 +9,6 @@ function GetSingleUser() {
   const { data: user, loading } = useFetch(getSingleUser, params.username)
 
   if (!user) return null
-
-  const info = user.info
   return (
     <>
       {loading ? <div> Loading </div> :
@@ -27,14 +25,41 @@ function GetSingleUser() {
             </div>
 
             <div className="section-two">
-                <div>
-                  <h6>{info.tagLine ? `tagLine: ${info.tagLine} ` : null}</h6>
-                  <h6>{info.portfolio ? `Portfolio: ${info.portfolio} ` : null} </h6>
-                  <h6>{info.github ? `Github: ${info.github} ` : null}</h6>
-                  <h6>{info.linkedIn ? `LinkedIn: ${info.linkedIn} ` : null} </h6>
-                  <h6>{info.bio ? `Bio : ${info.bio}` : null}</h6>
+              <div className="edit-wrapper">
+                <div className="info-wrapper">
+                  <div className="info">
+                    <p>{user.tagLine ? `Tag line: ${user.tagLine} ` : null}</p>
+                  </div>
                 </div>
-
+              </div>
+              <div className="edit-wrapper">
+                <div className="info-wrapper">
+                  <div className="info">
+                    <p>{user.portfolio ? `Portfolio: ${user.portfolio} ` : null}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="edit-wrapper">
+                <div className="info-wrapper">
+                  <div className="info">
+                    <p>{user.github ? `Github: ${user.github} ` : null}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="edit-wrapper">
+                <div className="info-wrapper">
+                  <div className="info">
+                    <p>{user.linkedIn ? `LinkedIn: ${user.linkedIn} ` : null}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="edit-wrapper">
+                <div className="info-wrapper">
+                  <div className="info">
+                    <p>{user.bio ? `Bio: ${user.bio} ` : null}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -48,10 +73,12 @@ function GetSingleUser() {
                 {categoryFilter(user.createdVideos, true).length >= 1 ?
                   <div className="video-thumbs-wrapper">
                     {categoryFilter(user.createdVideos, true).map(vid => (
-                      <div key={vid._id} className="video-thumb-cards">
-                        <h4>{vid.title}</h4>
-                        <img src={vid.thumbnail} alt={vid.title} />
-                      </div>
+                      <Link to={`/video/${vid._id}`} key={vid._id}>
+                        <div key={vid._id} className="video-thumb-cards">
+                          <h4>{vid.title}</h4>
+                          <img src={vid.thumbnail} alt={vid.title} />
+                        </div>
+                      </Link>
                     ))}
                   </div> :
 
@@ -68,10 +95,12 @@ function GetSingleUser() {
                 {categoryFilter(user.createdVideos, false).length >= 1 ?
                   <div className="video-thumbs-wrapper">
                     {categoryFilter(user.createdVideos, false).map(vid => (
-                      <div key={vid._id} className="video-thumb-cards">
-                        <h4>{vid.title}</h4>
-                        <img src={vid.thumbnail} alt={vid.title} />
-                      </div>
+                      <Link to={`/video/${vid._id}`} key={vid._id}>
+                        <div key={vid._id} className="video-thumb-cards">
+                          <h4>{vid.title}</h4>
+                          <img src={vid.thumbnail} alt={vid.title} />
+                        </div>
+                      </Link>
                     ))}
                   </div> :
 

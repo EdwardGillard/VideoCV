@@ -18,14 +18,14 @@ function Personal() {
         <div>
           <h1>Loading.</h1>
         </div> :
-        (personalVideos.length < 1) ? <h1>No users </h1>
+        (personalVideos.length < 1) ? <h1>No videos available at this time.</h1>
           :
           <div className="all-users-wrapper">
             {personalVideos.map(vid => (
               <Link to={`/video/${vid._id}`} key={vid._id} className="user-card">
                 <img src={vid.thumbnail} alt='thumbnail of video' />
                 <h3>{vid.title}</h3>
-                <h4>Content created by {vid.user.userName}</h4>
+                <h4>Content created by {vid.user}</h4>
               </Link>
             ))}
           </div>}

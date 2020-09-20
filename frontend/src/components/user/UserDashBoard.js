@@ -7,7 +7,7 @@ import { capitalize, categoryFilter, profileImageChecker } from '../../utils/mul
 function UserDashBoard() {
   const { data: user, loading, refetchData } = useFetch(userDash)
   const [info, setInputForEdit] = React.useState({
-    bio: '' ,
+    bio: '',
     linkedIn: '',
     github: '',
     portfolio: '',
@@ -21,20 +21,29 @@ function UserDashBoard() {
     tagLine: false
   })
   if (!user) return null
-  
+
+  //! On toggle fetch and attach user data to state. Then toggle the specific element requested to edit. 
   const toggleInput = (name, cur) => {
-    setInputForEdit(user.info)
+    setInputForEdit({
+      bio: user.bio,
+      linkedIn: user.linkedIn,
+      github: user.github,
+      portfolio: user.portfolio,
+      tagLine: user.tagLine
+    })
     setEditPencilToggle({ ...editPencilToggle, [name]: !cur })
   }
 
+  //! Handle changes from inputs.
   const handleChange = (e) => {
     setInputForEdit({ ...info, [e.target.name]: e.target.value })
   }
 
+  //! Submit newly edited information as an imported PUT request from the info state. close toggle. refetchdata. 
   const submitEdit = async event => {
     event.preventDefault()
     try {
-      await editUserInfo({ info: info })
+      await editUserInfo(info)
       setEditPencilToggle(!editPencilToggle)
       refetchData()
     } catch (err) {
@@ -61,7 +70,7 @@ function UserDashBoard() {
               <div className="edit-wrapper">
                 {editPencilToggle.tagLine ?
                   <form className="info-wrapper" onSubmit={submitEdit}
-                  value={info.tagLine}>
+                  >
                     <input
                       onChange={handleChange}
                       name="tagLine"
@@ -73,7 +82,7 @@ function UserDashBoard() {
                   :
                   <div className="info-wrapper">
                     <div className="info">
-                      <p>Tag line: {user.info.tagLine}</p>
+                      <p>Tag line: {user.tagLine}</p>
                     </div>
                   </div>}
                 <img onClick={() => toggleInput('tagLine', editPencilToggle.tagLine)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
@@ -94,7 +103,7 @@ function UserDashBoard() {
                   :
                   <div className="info-wrapper">
                     <div className="info">
-                      <p>Portfolio: {user.info.portfolio}</p>
+                      <p>Portfolio: {user.portfolio}</p>
                     </div>
                   </div>}
                 <img onClick={() => toggleInput('portfolio', editPencilToggle.portfolio)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
@@ -115,7 +124,7 @@ function UserDashBoard() {
                   :
                   <div className="info-wrapper">
                     <div className="info">
-                      <p>Github: {user.info.github}</p>
+                      <p>Github: {user.github}</p>
                     </div>
                   </div>}
                 <img onClick={() => toggleInput('github', editPencilToggle.github)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
@@ -136,7 +145,7 @@ function UserDashBoard() {
                   :
                   <div className="info-wrapper">
                     <div className="info">
-                      <p>LinkedIn: {user.info.linkedIn}</p>
+                      <p>LinkedIn: {user.linkedIn}</p>
                     </div>
                   </div>}
                 <img onClick={() => toggleInput('linkedIn', editPencilToggle.linkedIn)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
@@ -156,7 +165,7 @@ function UserDashBoard() {
                   :
                   <div className="info-wrapper">
                     <div className="info">
-                      <p>Bio: {user.info.bio}</p>
+                      <p>Bio: {user.bio}</p>
                     </div>
                   </div>}
                 <img onClick={() => toggleInput('bio', editPencilToggle.bio)} className="edit-pencil"
@@ -175,12 +184,15 @@ function UserDashBoard() {
               </div>
               <div className="video-thumbs-wrapper">
                 {categoryFilter(user.createdVideos, true).length >= 1 ?
+
                   <div className="video-thumbs-wrapper">
                     {categoryFilter(user.createdVideos, true).map(vid => (
-                      <div key={vid._id} className="video-thumb-cards">
-                        <h4>{vid.title}</h4>
-                        <img src={vid.thumbnail} alt={vid.title} />
-                      </div>
+                      <Link to={`/video/${vid._id}`} key={vid._id}>
+                        <div key={vid._id} className="video-thumb-cards">
+                          <h4>{vid.title}</h4>
+                          <img src={vid.thumbnail} alt={vid.title} />
+                        </div>
+                      </Link>
                     ))}
                   </div> :
                   <div className="video-thumb-cards no-vids">
@@ -199,10 +211,12 @@ function UserDashBoard() {
                 {categoryFilter(user.createdVideos, false).length >= 1 ?
                   <div className="video-thumbs-wrapper">
                     {categoryFilter(user.createdVideos, false).map(vid => (
-                      <div key={vid._id} className="video-thumb-cards">
-                        <h4>{vid.title}</h4>
-                        <img src={vid.thumbnail} alt={vid.title} />
-                      </div>
+                      <Link to={`/video/${vid._id}`} key={vid._id}>
+                        <div key={vid._id} className="video-thumb-cards">
+                          <h4>{vid.title}</h4>
+                          <img src={vid.thumbnail} alt={vid.title} />
+                        </div>
+                      </Link>
                     ))}
 
                   </div> :
