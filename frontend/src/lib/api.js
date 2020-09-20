@@ -37,6 +37,12 @@ export const getSingleUser = (username) => {
   return axios.get(`/api/users/${username}`)
 }
 
+//* PUT edit user.
+export const editUserInfo = (info) => {
+  console.log(info)
+  return axios.put(`/api/profile`, info, withHeaders())
+}
+
 //! - Video Requests -
 //* GET all videos
 export const getAllVideos = () => {

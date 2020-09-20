@@ -29,17 +29,18 @@ body {
 
 a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
-label, small {
+label,
+small {
   color: white;
 }
 
 .all-users-wrapper {
   display: flex;
   flex-flow: row wrap;
-  .user-card{
+  .user-card {
     color: black;
     background-color: white;
     margin: 10px;
@@ -47,7 +48,6 @@ label, small {
     min-width: 300px;
   }
 }
-
 
 .dashboard-top {
   width: 100%;
@@ -75,8 +75,41 @@ label, small {
   }
   .section-two {
     width: 70%;
-    text-align: center;
-
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .edit-wrapper {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      background-color: white;
+      input{
+        width: 60%;
+      }
+      button {
+        width: 30%;
+      }
+      .info-wrapper {
+        width: 70%;
+        height: 40px;
+        color: black;
+        .info {
+          width: 90%;
+          display: flex;
+          align-items: center;
+          a {
+            color: black
+          }
+        }
+      }
+      .edit-pencil {
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 .videos-wrapper {
@@ -177,12 +210,7 @@ label, small {
 //* For fade at banner base
 .bottom-fade {
   height: 7.4rem;
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
-  )
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
 }
 
 @keyframes colorChange {

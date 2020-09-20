@@ -21,3 +21,4 @@ export const profileImageChecker = (user) => {
       <img src={require('../assets/Female.png')} alt="Female" height="200px" width="200px" />
 }
 
+

@@ -1,13 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { userDash } from '../../lib/api'
+import { userDash, editUserInfo } from '../../lib/api'
 import useFetch from '../../utils/useFetch'
 import { capitalize, categoryFilter, profileImageChecker } from '../../utils/multiUseFunctions'
 
 function UserDashBoard() {
   const { data: user, loading, refetchData } = useFetch(userDash)
-
+  const [info, setInputForEdit] = React.useState({
+    bio: '' ,
+    linkedIn: '',
+    github: '',
+    portfolio: '',
+    tagLine: ''
+  })
+  const [editPencilToggle, setEditPencilToggle] = React.useState({
+    bio: false,
+    linkedIn: false,
+    github: false,
+    portfolio: false,
+    tagLine: false
+  })
   if (!user) return null
+  
+  const toggleInput = (name, cur) => {
+    setInputForEdit(user.info)
+    setEditPencilToggle({ ...editPencilToggle, [name]: !cur })
+  }
+
+  const handleChange = (e) => {
+    setInputForEdit({ ...info, [e.target.name]: e.target.value })
+  }
+
+  const submitEdit = async event => {
+    event.preventDefault()
+    try {
+      await editUserInfo({ info: info })
+      setEditPencilToggle(!editPencilToggle)
+      refetchData()
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   return (
     <>
@@ -25,12 +58,112 @@ function UserDashBoard() {
             </div>
 
             <div className="section-two">
-              <h3>{user.tagLine}</h3>
-              <h6>Portfolio: {user.portfolio} </h6>
-              <h6>Github: {user.github}</h6>
-              <h6>LinkedIn: {user.linkedIn} </h6>
-              <h6>Bio:</h6>
-              <p> {user.bio} </p>
+              <div className="edit-wrapper">
+                {editPencilToggle.tagLine ?
+                  <form className="info-wrapper" onSubmit={submitEdit}
+                  value={info.tagLine}>
+                    <input
+                      onChange={handleChange}
+                      name="tagLine"
+                      value={info.tagLine}
+                      type="text"
+                      placeholder="Add a tagline" />
+                    <button>Submit</button>
+                  </form>
+                  :
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <p>Tag line: {user.info.tagLine}</p>
+                    </div>
+                  </div>}
+                <img onClick={() => toggleInput('tagLine', editPencilToggle.tagLine)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
+              </div>
+
+              <div className="edit-wrapper">
+                {editPencilToggle.portfolio ?
+                  <form className="info-wrapper"
+                    onSubmit={submitEdit}>
+                    <input
+                      onChange={handleChange}
+                      name="portfolio"
+                      value={info.portfolio}
+                      type="text"
+                      placeholder="Add a link to your portfolio" />
+                    <button>Submit</button>
+                  </form>
+                  :
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <p>Portfolio: {user.info.portfolio}</p>
+                    </div>
+                  </div>}
+                <img onClick={() => toggleInput('portfolio', editPencilToggle.portfolio)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
+              </div>
+
+              <div className="edit-wrapper">
+                {editPencilToggle.github ?
+                  <form className="info-wrapper"
+                    onSubmit={submitEdit}>
+                    <input
+                      onChange={handleChange}
+                      name="github"
+                      value={info.github}
+                      type="text"
+                      placeholder="Add a link to your Github" />
+                    <button>Submit</button>
+                  </form>
+                  :
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <p>Github: {user.info.github}</p>
+                    </div>
+                  </div>}
+                <img onClick={() => toggleInput('github', editPencilToggle.github)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
+              </div>
+
+              <div className="edit-wrapper">
+                {editPencilToggle.linkedIn ?
+                  <form className="info-wrapper"
+                    onSubmit={submitEdit}>
+                    <input
+                      onChange={handleChange}
+                      name="linkedIn"
+                      value={info.linkedIn}
+                      type="text"
+                      placeholder="Add link to your LinkedIn" />
+                    <button>Submit</button>
+                  </form>
+                  :
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <p>LinkedIn: {user.info.linkedIn}</p>
+                    </div>
+                  </div>}
+                <img onClick={() => toggleInput('linkedIn', editPencilToggle.linkedIn)} src={require('../../assets/pencil.png')} className="edit-pencil" alt="edit" />
+              </div>
+
+              <div className="edit-wrapper">
+                {editPencilToggle.bio ?
+                  <form className="info-wrapper" onSubmit={submitEdit}>
+                    <input
+                      onChange={handleChange}
+                      name="bio"
+                      value={info.bio}
+                      type="text"
+                      placeholder="Write a bio about your experience." />
+                    <button>Submit</button>
+                  </form>
+                  :
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <p>Bio: {user.info.bio}</p>
+                    </div>
+                  </div>}
+                <img onClick={() => toggleInput('bio', editPencilToggle.bio)} className="edit-pencil"
+                  src={require('../../assets/pencil.png')}
+                  alt="edit" />
+              </div>
+
             </div>
           </div>
 
@@ -53,9 +186,9 @@ function UserDashBoard() {
                   <div className="video-thumb-cards no-vids">
                     <p>No Videos</p>
                   </div>}
-                  <Link to="/createvideo" className="video-thumb-cards new-vid">
-                      <p>+</p>
-                  </Link>
+                <Link to="/createvideo" className="video-thumb-cards new-vid">
+                  <p>+</p>
+                </Link>
               </div>
             </div>
             <div className="videos">

@@ -9,8 +9,8 @@ import VideoShow from './components/show/VideoShow'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 
-import Projects from './components/show/Projects'
-import Personal from './components/show/Personal'
+import Projects from './components/show/projects'
+import Personal from './components/show/personal'
 
 import UserDashBoard from './components/user/UserDashBoard'
 import CreateVideo from './components/user/CreateVideo'

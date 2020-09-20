@@ -1,6 +1,15 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
+//* SubSchema for bio, linkedin, github, portfolio and tagline
+const userInfoSchema = new mongoose.Schema({
+  bio: { type: String, maxlength: 250 },
+  linkedIn: { type: String },
+  github: { type: String },
+  portfolio: { type: String },
+  tagLine: { type: String, maxlength: 200 }
+})
+
 //! User Schema. required fields username, email, password, gender, jobseeker on signup. 
 const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true, maxlength: 50 },
@@ -9,11 +18,7 @@ const userSchema = new mongoose.Schema({
   gender: { type: String, required: true, enum: ['Male', 'Female'] },
   jobseeker: { type: Boolean, required: true },
   profileImg: { type: String },
-  bio: { type: String, maxlength: 250 },
-  linkedIn: { type: String },
-  github: { type: String },
-  portfolio: { type: String },
-  tagLine: { type: String, maxlength: 200 }
+  info: userInfoSchema 
 })
 
 //* Attaches created videos to user schema
