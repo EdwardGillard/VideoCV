@@ -40,6 +40,8 @@ small {
 .all-users-wrapper {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  width: 80%;
   .user-card {
     color: black;
     background-color: white;
