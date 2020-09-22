@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Personal () {
+function Personal() {
 
   return (
     <div className="page">

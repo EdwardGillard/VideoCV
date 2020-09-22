@@ -22,19 +22,21 @@ function App () {
     <BrowserRouter>
       <Navbar />
       <Switch>
+        {/* Auth related */}
+        <Route path="/dashboard" component={UserDashBoard} />
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register} />
+
         <Route exact path='/' component={Home}/>
         <Route path="/about" component={About} />
-        <Route path="/profiles" component={AllUsers} />
-        <Route path="/:username" component={GetSingleUser} />
+        <Route path="/allusers" component={AllUsers} />
         {/* Video related */}
         <Route path="/createvideo" component={CreateVideo} />
         <Route path="/videoshow" component={videoShow}/>
         <Route path="/projects" component={Projects}/>
         <Route path="/personal" component={Personal}/>
-        {/* Auth related */}
-        <Route path="/dashboard" component={UserDashBoard} />
-        <Route path="/login" component={Login}/>
-        <Route path="/register" component={Register} />
+        
+        <Route path="/:username" component={GetSingleUser} />
       </Switch>
     </BrowserRouter>
   )

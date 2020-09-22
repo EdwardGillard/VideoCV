@@ -18,6 +18,7 @@ function AllUsers() {
   return (
     <>
       <div className="page">
+        <h1>Profiles Page</h1>
         {loading ?
           <div>
           No users

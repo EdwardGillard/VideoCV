@@ -23,7 +23,7 @@ function Navbar() {
           <ul className="nav-links">
             <li><Link className="nav-link" to="/">Home</Link></li>
             <li><Link className="nav-link" to="/about">About</Link></li>
-            <li><Link className="nav-link" to="/profiles">Profiles</Link></li>
+            <li><Link className="nav-link" to="/allusers">Profiles</Link></li>
             <li className="nav-link dropdown"> Categories
               <div className="dropdown-content">
                 <Link to="/projects">Projects</Link>
@@ -40,7 +40,7 @@ function Navbar() {
                 {isAuthenticated() && <Link to="/dashboard">My profile</Link>}
                 {!isAuthenticated() && <Link to="/login">login</Link>}
                 {!isAuthenticated() && <Link to="/register">Register</Link>}
-                {isAuthenticated() && <Link to='/' onClick={logout}></Link>}
+                {isAuthenticated() && <Link to='/' onClick={logout}>Logout</Link>}
               </div>
             </li>
           </ul>
