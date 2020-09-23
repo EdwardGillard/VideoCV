@@ -60,13 +60,12 @@
       justify-content: center;
       align-items: center;
       background-color: rgba(255, 255, 255, 0.1);
+      transition: all 1s;
 
       &:hover {
-        animation: colorChange ease 3s;
         background: white;
 
         p {
-          animation: colorChange2 ease 3s;
           color: black;
         }
       }
@@ -80,3 +79,25 @@
     }
   }
 }
+
+
+//* Not needed
+// @keyframes colorChange {
+//   0% {
+//     background-color: rgba(255, 255, 255, 0.1);
+//   }
+
+//   100% {
+//     background-color: rgba(255, 255, 255, 1);
+//   }
+// }
+
+// @keyframes colorChange2 {
+//   0% {
+//     color: white;
+//   }
+
+//   100% {
+//     color: black;
+//   }
+// }
