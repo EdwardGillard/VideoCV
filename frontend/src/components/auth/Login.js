@@ -30,13 +30,15 @@ function Login() {
   }
 
   return (
-    <div className="page">
-      <div className="form-wrapper">
+    <div className="page login">
+      <div className="form-wrapper top">
+        <h2>Sign In</h2>
         <form onSubmit={submitLogin}>
 
           <label>Email:</label>
           <input 
             name="email" 
+            className={`input ${ errors ? 'red' : ''}`}
             placeholder="Enter your email here" 
             type="text" 
             value={formData.email} 
@@ -45,13 +47,14 @@ function Login() {
 
           <label>Password: </label>
           <input 
+            className={`input ${ errors ? 'red' : ''}`}
             name="password" 
-            placeholder="password" 
+            placeholder="Password" 
             type="password" 
             onChange={handleChange} 
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit">Sign In</button>
           
         </form>
       </div>

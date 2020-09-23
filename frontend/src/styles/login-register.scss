@@ -1,0 +1,77 @@
+.login, .register {
+  background-image: url(../assets/vlog-collage.jpg);
+  filter: contrast(60%);
+}
+  .form-wrapper {
+    background-color: black;
+    width: 800px;
+    height: 600px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+
+    h2 {
+      color: white;
+      margin: 0;
+      margin-left: 20%;
+      font-size: 40px;
+      font-weight: 800;
+    }
+
+    form {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      width: 480px;
+
+      select {
+        width: 50%;
+      }
+
+      label {
+        font-size: 25px;
+        margin-top: 20px;
+      }
+
+      input {
+        width: 450px;
+        height: 12px;
+        margin-top: 10px;
+        padding: 15px;
+        border: 0;
+        border-radius: 5px;
+        vertical-align: baseline;
+        font-size: 20px;
+
+        &::placeholder {
+          font-size: 20px;
+        }
+      }
+
+      select {
+        height: 40px;
+        padding: 7px;
+        border-radius: 5px;
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      button {
+        height: 60px;
+        color: white;
+        font-size: 25px;
+        background-color: red;
+        border: 0;
+        cursor: pointer;
+        margin-top: 40px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+
+.register-form {
+  height: 850px;
+}

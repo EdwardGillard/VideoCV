@@ -2,42 +2,36 @@ import React from 'react'
 import useFetch from '../../utils/useFetch'
 import { getAllUsers } from '../../lib/api'
 import { Link } from 'react-router-dom'
-import { capitalize } from '../../utils/multiUseFunctions'
+import { capitalize, profileImageChecker } from '../../utils/multiUseFunctions'
 
 
 function AllUsers() {
-  const { data: users, errors, loading, refetchData } = useFetch(getAllUsers)
+  const { data: users, loading, refetchData } = useFetch(getAllUsers)
 
   if (!users) return null
 
   //! Filter to display only Jobseekers
   const allSeekers = users.filter(user => user.jobseeker)
-  console.log('its not broken')
-  console.log(allSeekers)
 
   return (
     <>
       <div className="page">
-        <h1>Profiles Page</h1>
+        <h1 className='top'>Profiles Page</h1>
         {loading ?
           <div>
-          No users
-          </div> :
-          <div className="all-users-wrapper">
-            {allSeekers.map(user => (
-              <Link to={`/${user.userName}`} key={user._id} className="user-card">
-                <h5>{capitalize(user.userName)}</h5>
-                {user.profileImg ? 
-                  <img src={user.profileImg} alt="profile picture" height="200px" width="200px"/>
-                  : (user.gender === 'Male') ? 
-                    <img src={require('../../assets/Male.png')} alt="Male" height="200px" width="200px"/>
-                    : 
-                    <img src={require('../../assets/Female.png')} alt="Female" height="200px" width="200px"/>}
-                <p>{capitalize(user.userName)} has {user.createdVideos.length} videos </p>
-              </Link>
-            ))}
-          </div>
-        }
+            <h1>Loading.</h1>
+          </div> : 
+          (allSeekers.length < 1) ? <h1 className='top'>No users </h1> 
+            : 
+            <div className="all-users-wrapper">
+              {allSeekers.map(user => (
+                <Link to={`/${user.userName}`} key={user._id} className="user-card">
+                  <h5>{capitalize(user.userName)}</h5>
+                  <div className="thumbnail-wrap">{profileImageChecker(user)}</div>
+                  <p>{capitalize(user.userName)} has {user.createdVideos.length} {user.createdVideos.length === 1 ? 'video' : 'videos'}</p>
+                </Link>
+              ))}
+            </div>}
       </div>
     </>
   )

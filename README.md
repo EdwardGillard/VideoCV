@@ -25,6 +25,15 @@ login
 register
 animations.
 
+dev tools used:
+trello, 
+miro,
+insomnia,
+vs code,
+git,
+github,
+
+
 
 
 

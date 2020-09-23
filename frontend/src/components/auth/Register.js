@@ -8,9 +8,14 @@ function Register() {
     userName: '',
     email: '',
     password: '',
-    gender: 'Male',
     passwordConfirmation: '',
-    jobseeker: true
+    jobseeker: true,
+    gender: 'Male',
+    github: '',
+    linkedIn: '',
+    tagLine: '',
+    bio: '',
+    portfolio: ''
   })
   const [errors, setErrors] = React.useState('')
 
@@ -22,58 +27,87 @@ function Register() {
   const submitRegister = async (e) => {
     e.preventDefault()
     try {
-      const res = await register(formData)
-      console.log(res)
+      await register(formData)
       history.push('/login')
     } catch (err) {
-      console.log(err.response)
-      setErrors(err.response)
+      setErrors(err.response.data)
     }
   }
 
-  console.log(formData)
   return (
-    <div className="form-wrapper">
-      <form onSubmit={submitRegister}>
+    <div className="page register">
+      <div className="form-wrapper register-form top">
+        <h2>Register</h2>
 
-        <label>Email:</label>
-        <input 
-          placeholder="Enter your email here" 
-          type="text" 
-          name="email" 
-          value={formData.email} 
-          onChange={handleChange}
-        ></input>
+        <form onSubmit={submitRegister}>
+          <label>Email:</label>
+          <input
+            placeholder="Enter your email here"
+            className={`input ${errors ? 'red' : ''}`}
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <small className="red">{errors.email}</small>}
 
-        <label>Username:</label>
-        <input 
-          placeholder="Enter your username here" 
-          type="text" name="userName" 
-          value={formData.userName} 
-          onChange={handleChange}
-        ></input>
+          <label>Username:</label>
+          <input
+            placeholder="Enter your username here"
+            className={`input ${errors.userName ? 'red' : ''}`}
+            type="text" name="userName"
+            value={formData.userName}
+            onChange={handleChange}
+          />
+          {errors.userName && <small className="red">{errors.userName}</small>}
 
-        <label>Gender:</label>
-        <select type="text" name="gender" value={formData.gender} onChange={handleChange}>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
+          <label>Password:</label>
+          <input
+            placeholder="Enter your password here"
+            name="password"
+            className={`input ${errors.password ? 'red' : ''}`}
+            type="password"
+            onChange={handleChange} />
+          {errors.password && <small className="red">{errors.password}</small>}
 
-        <label>Password:</label>
-        <input name="password" type="password" onChange={handleChange} />
+          <label>Confirm Password:</label>
+          <input
+            placeholder="Enter your password here"
+            name="passwordConfirmation"
+            type="password"
+            className={`input ${errors.passwordConfirmation ? 'red' : ''}`}
+            onChange={handleChange} />
+          {errors.passwordConfirmation && <small className="red">{errors.passwordConfirmation}</small>}
 
-        <label>Confirm Password:</label>
-        <input name="passwordConfirmation" type="passwordConfirmation" onChange={handleChange} />
+          <label>Gender:</label>
+          <select
+            type="text"
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}>
 
-        <label>Are you a job Seeker?</label>
-        <select type="text" name="jobseeker" value={formData.jobseeker} onChange={handleChange}>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
-        </select>
-        <button type="submit">Submit</button>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
 
+          </select>
 
-      </form>
+          <label>Are you a job Seeker?</label>
+          <select
+            type="text"
+            name="jobseeker"
+            value={formData.jobseeker}
+            onChange={handleChange}
+          >
+
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+
+          </select>
+
+          <button type="submit">Register</button>
+
+        </form>
+      </div>
     </div>
 
   )

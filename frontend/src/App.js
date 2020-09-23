@@ -4,13 +4,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/common/Home'
 import About from './components/common/About'
 import Navbar from './components/common/Navbar'
-import videoShow from './components/common/videoShow'
+import VideoShow from './components/show/VideoShow'
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 
-import Projects from './components/show/projects'
-import Personal from './components/show/personal'
+import Projects from './components/show/Projects'
+import Personal from './components/show/Personal'
 
 import UserDashBoard from './components/user/UserDashBoard'
 import CreateVideo from './components/user/CreateVideo'
@@ -29,13 +29,16 @@ function App () {
 
         <Route exact path='/' component={Home}/>
         <Route path="/about" component={About} />
-        <Route path="/allusers" component={AllUsers} />
+        {/* Auth related */}
+        <Route path="/dashboard" component={UserDashBoard} />
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register} />
+        <Route path="/profiles" component={AllUsers} />
         {/* Video related */}
         <Route path="/createvideo" component={CreateVideo} />
-        <Route path="/videoshow" component={videoShow}/>
         <Route path="/projects" component={Projects}/>
         <Route path="/personal" component={Personal}/>
-        
+        <Route path="/video/:videoid" component={VideoShow}/>
         <Route path="/:username" component={GetSingleUser} />
       </Switch>
     </BrowserRouter>

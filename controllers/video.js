@@ -3,9 +3,10 @@ const { notFound, unauthorized } = require('../lib/errorMessages')
 
 //* Video Index
 //? Working ? Yes
+//? Errors tested ? N/A
 async function videosIndex(req, res) {
   try {
-    const videos = await Video.find()
+    const videos = await Video.find().populate('user')
     res.status(200).json(videos)
   } catch (err) {
     res.json(err)
@@ -17,7 +18,7 @@ async function videosIndex(req, res) {
 //? Errors Tested ? Yes
 async function getSingleVideo(req, res, next) {
   try {
-    const video = await Video.findById(req.params.videoid)
+    const video = await Video.findById(req.params.videoid).populate('user')
     if (!video) throw new Error(notFound)
     res.status(200).json(video)
   } catch (err) {

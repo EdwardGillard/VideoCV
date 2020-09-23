@@ -1,0 +1,24 @@
+.all-users-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 80%;
+
+  .user-card {
+    color: black;
+    background-color: white;
+    margin: 10px;
+    height: 300px;
+    min-width: 300px;
+  }
+
+  h5,
+  p {
+    text-align: center;
+  }
+
+  .thumbnail-wrap {
+    display: flex;
+    justify-content: center;
+  }
+}
